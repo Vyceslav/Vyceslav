@@ -13,8 +13,8 @@
 
 <body style="margin: 0;">
 <form name="login" method="post" action="login.php">
-    <label>Логин<input type="text" name="log"></label>
-    <label>Пароль<input type="password" name="pass"></label>
+    <label>Логин<input type="text" name="log" value="<?php echo isset($_COOKIE['log']) ? $_COOKIE['log'] : '' ?>"></label>
+    <label>Пароль<input type="password" name="pass" value="<?php echo isset($_COOKIE['pass']) ? $_COOKIE['pass'] : '' ?>"></label>
     <input type="submit" value="Отправить">
 </form>
 
