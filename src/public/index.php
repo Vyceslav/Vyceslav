@@ -12,27 +12,10 @@
 </head>
 
 <body style="margin: 0;">
-<form name="city" method="post" action="">
-    <label>Назовите ваш город:<input type="text" name="name"></label>
-    <input type="submit" name="send" value="Отправить">
-
-</form>
-<form name="age" method="GET" action="">
-    <div>Укажите ваш возраст</div>
-    <div>менее 20лет<input type="radio" name="age" value="1"></div>
-    <div>20-25<input type="radio" name="age" value="2"></div>
-    <div>26-30<input type="radio" name="age" value="3"></div>
-    <div>более 30лет<input type="radio" name="age" value="4"></div>
-    <input type="submit">
-</form>
-<form name="product" method="post" action="" enctype="multipart/form-data">
-    <div>Cоздаем новый товар</div>
-    <label>Наименование<input type="text" name="name"></label>
-    <label>Производитель<input type="text" name="manufacturer"></label>
-    <label>Описание<input type="text" name="description"></label>
-    <label><input type="file" name="avatar"></label>
-    <input type="submit">
-
+<form name="login" method="post" action="login.php">
+    <label>Логин<input type="text" name="log"></label>
+    <label>Пароль<input type="password" name="pass"></label>
+    <input type="submit" value="Отправить">
 </form>
 
 
@@ -41,31 +24,6 @@
 <!--    <img src="palmo.jpg" alt="">-->
 <!--</main>-->
 <?php
-//Спросите город пользователя с помощью формы. Выведите на экран фразу 'Ваш город: %Город%'
-if (isset($_POST)) {
-    print("Город: " . $_POST['name']);
-}
-//Спросите у пользователя его возраст с помощью нескольких radio-кнопок. Варианты ответа сделайте такими: менее 20 лет, 20-25, 26-30, более 30.
-if (isset($_REQUEST['age']) and $_REQUEST['age'] == 1) {
-    echo "<br/>", 'Вам менее 25лет';
-}
-if (isset($_REQUEST['age']) and $_REQUEST['age'] == 2) {
-    echo "<br/>", 'Вам 20-25';
-}
-if (isset($_REQUEST['age']) and $_REQUEST['age'] == 3) {
-    echo "<br/>", 'Вам 26-30';
-}
-if (isset($_REQUEST['age']) and $_REQUEST['age'] == 4) {
-    echo "<br/>", 'Вам больше 30';
-}
-//Создайте форму создания товара(Ввести его наименование,производитель,краткая характеристика,фотография)
-if (isset($_POST)){
-    print("<br>Название: ".$_POST['name']);
-    print("<br>Произведено: ".$_POST['manufacturer']);
-    print("<br>Описание: ".$_POST['description']);
-
-}
-//Создайте страницу теста.В тесте должны быть разные типы ответов(Текстовый,Один из нескольких вариантов,Несколько правильных ответов,вопрос с картинками).По отправке формы отобразить ответы пользователя,правильные ответы и подсчитать количество баллов
 
 
 ?>
