@@ -18,7 +18,7 @@
 
 </form>
 <form name="age" method="GET" action="">
-    <div>Укажите ваш возраст</div>
+    <div>Укажите ваш возраст  gj;fkeqcnf </div>
     <div>менее 20лет<input type="radio" name="age" value="1"></div>
     <div>20-25<input type="radio" name="age" value="2"></div>
     <div>26-30<input type="radio" name="age" value="3"></div>
