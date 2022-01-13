@@ -23,6 +23,7 @@
     <label>Пароль<input type="password" name="pass" value=""></label>
     <label>Подтвердить пароль<input type="password" name="pass1" value=""></label>
     <input type="submit">
+
 </form>
 
 <!-- Add your site or application content here -->
@@ -30,7 +31,6 @@
 <!--    <img src="palmo.jpg" alt="">-->
 <!--</main>-->
 <?php
-
 
 //1.1 Создать файл index.php в котором две кнопки для регистрации и авторизации на сайте
 //1.2 Если пользователь уже авторизирован, то вместо кнопок регистрации и авторизации добавить ссылку для перехода на страницу Home
