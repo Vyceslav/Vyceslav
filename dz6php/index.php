@@ -21,17 +21,18 @@
 
 //1. Создать родительский класс Figure, внутри которого protected свойство type, отвечающее за тип фигуры, метод-геттер для получения типа фигуры, и методы для определения площади и периметра геометрической фигуры (методы без реализации)
 class Figure {
-    protected $circle;
-    protected $triangle;
-    protected $square;
-    function Getcircle(){
-        return $this->circle = 'круг';
+    protected $type;
+    public function __construct($type)
+    {
+        $this->type = $type;
     }
-    function Gettriangle(){
-        return $this->triangle = 'триугольник';
+    public function getType(){
     }
-    function Getsquare(){
-        return $this->square = 'квадрат';
+    function perymeter(){
+
+    }
+    function square(){
+
     }
 }
 //2.1 Создать три дочерних класса - Circle, Triangle и Square. Каждый из них принимает свои определенные параметры: для квадрата это длина стороны, для круга радиус, для треугольника длины трёх сторон
@@ -41,12 +42,17 @@ class Circle extends Figure{
     {
         $this->radius = $radius;
     }
-    function areaCircle(){
+    function getType(){
+        $this->type = 'круг';
+        return $this->type;
+    }
+    function square(){
         return $this->radius**2*3.14;
     }
-    function circumference(){
+    function perimeter(){
         return $this->radius*2*3.14;
     }
+
 }
 class Triangle extends Figure{
     protected $side1;
@@ -57,8 +63,12 @@ class Triangle extends Figure{
         $this->side1 = $side1;
         $this->side2 = $side2;
         $this->side3 = $side3;
+        $this->type = 'треугольник';
     }
-    function perTriangle(){
+    function getType(){
+       return $this->type;
+    }
+    function perimeter(){
         return $this->side1+$this->side2+$this->side3;
     }
 }
@@ -67,21 +77,25 @@ class Square extends Figure{
     public function __construct($side)
     {
         $this->side = $side;
+        $this->type = 'квадрат';
     }
-    function perSquare(){
+    function getType(){
+       return $this->type;
+    }
+    function perimeter(){
         return $this->side*4;
     }
-    function areaSquare(){
+    function square(){
         return $this->side**2;
     }
 }
-$object1 = new Figure();
+$object1 = new Figure('Круг');
 $object = new Circle(5);
-echo 'Фигура: ',$object1->Getcircle(),', площадь: ',$object->areaCircle(), ', длина окружности: ', $object->circumference(), "<br>";
+echo 'Фигура: ',$object->getType(),', площадь: ',$object->square(), ', длина окружности: ', $object->perimeter(), "<br>";
 $object2 = new Triangle(3,4,5);
-echo 'Фигура: ', $object1->Gettriangle(), ', периметр: ', $object2->perTriangle(), "<br>";
+echo 'Фигура: ', $object2->getType(), ', периметр: ', $object2->perimeter(), "<br>";
 $object3 = new Square(3);
-echo 'Фигура: ', $object1->Getsquare(), ', периметр: ', $object3->perSquare(), ', площадь: ', $object3->areaSquare();
+echo 'Фигура: ', $object3->getType(), ', периметр: ', $object3->perimeter(), ', площадь: ', $object3->square();
 //2.2 В каждом из дочерних классов добавить методы для расчета площади и периметра фигуры
 //
 //3.1 Вывести на страницу результаты в формате "Фигура: Квадрат, площадь: 9, периметр: 12" (для вывода типа фигуры используем метод-геттер)
