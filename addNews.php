@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html class="no-js" lang="">
 
@@ -12,14 +13,14 @@
 </head>
 <body>
 <form method="post" action="addNews2.php" enctype="multipart/form-data">
-    <label>Название новости<input type="text" name="nameNews" value=""></label>
-    <label>Краткое опистание<input type="text" name="content" value=""></label>
-    <label>Дата<input type="date" name="date" value=""></label>
-    <label>черновик<input type="radio" name="published" value="1"></label>
-    <label>опубликовано<input type="radio" name="published" value="2"></label>
-    <label>Текст новости<textarea name="textNews"></textarea></label>
-    <label>Автор<input type="text" name="author"></label>
-    <input type="file" name="imegNews" value="">
+    <label>Название новости<input type="text" name="nameNews" value=""></label><br/>
+    <label>Краткое опистание<input type="text" name="content" value=""></label><br/>
+    <label>Дата<input type="date" name="date" value=""></label><br/>
+    <label>черновик<input type="radio" name="published" value="1"></label><br/>
+    <label>опубликовано<input type="radio" name="published" value="2"></label><br/>
+    <label>Текст новости<textarea name="textNews"></textarea></label><br/>
+    <label>Автор<input type="text" name="author"></label><br/>
+    <input type="file" name="avatar" value=""><br/>
     <input type="submit">
 </form>
 
