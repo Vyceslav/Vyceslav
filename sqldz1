@@ -1,0 +1,65 @@
+-- 1. Создать таблицу продавцов vendors с полями:
+--   - id
+--   - Название магазина (не пустое)
+--   - Количество товаров (не пустое)
+--   - Минимальная цена в магазине (не пустое)
+--   - максимальная цена в магазине (не пустое)
+  CREATE table vendors
+  (
+  id int unsigned auto_increment primary key,
+  score_name varchar(30) not null,
+  `quantity` int unsigned not null,
+  price_min int unsigned not null,
+  price_max int unsigned not null
+  );
+-- 2. Добавить в уже существующую таблицу поля: (написать запрос для добавления колонки в таблицу, прочитать в интернете)
+--   - Имя владельца магазина (не пустое)
+--   - Номер телефона владельца (не пустое)
+--   - Объем продаж (big или small) - использовать ENUM (не пустое)
+alter table `vendors` add column `boss_neme` varchar(30) not null;
+alter table `vendors` add column `nuber_tel` int unsigned not null;
+alter table `vendors` add column `valume_sale`enum('big', 'small') not null;
+-- 3. Заполнить таблицу vendors (10 записей)
+insert into `vendors` (`score_name`, `quantity`, `price_min`, `price_max`, `boss_neme`, `nuber_tel`, `valume_sale`) 
+values 
+('Mars', 50, 50, 250, 'Vas', 0665959598, 'big'),
+('Plasa', 150, 20, 150, 'Piter', 0505959598, 'big'),
+('Varus', 70, 70, 220, 'Ildar', 0669995588, 'small'),
+('Parus', 100, 25, 650, 'Bob', 0959995555, 'small'),
+('Coks', 25, 150, 850, 'jhon', 0666655777, 'big'),
+('Mars', 50, 50, 250, 'Vas', 0665959598, 'big'),
+('Plasa', 150, 20, 150, 'Piter', 0505959598, 'big'),
+('Varus', 70, 70, 220, 'Ildar', 0669995588, 'small'),
+('Parus', 100, 25, 650, 'Bob', 0959995555, 'small'),
+('Coks', 25, 150, 850, 'jhon', 0666655777, 'big');
+
+-- 4. Получить первые 5 записей с таблицы
+select * from vendors limit 5;
+-- 5. Получить среднюю минимальную цену по всем записям
+select AVG(price_min) from vendors;
+-- 6. Получить количество продавцов, у которых максимальная цена за товар больше 600
+select * from vendors where `price_max` >= 600 ;
+-- 7. Получить все записи, у которых объем продаж равен small
+select * FROM vendors where valume_sale = 'small';
+-- 8. Получить последнюю запись
+SELECT * FROM vendors ORDER BY id DESC LIMIT 1;
+-- 9. Получить ИМЕНА продавцов, номер телефона которых начинается с '066'  
+select boss_neme from vendors where nuber_tel like '66%' ;
+-- 10. Получить НАЗВАНИЯ МАГАЗИНОВ, количество товаров у которых больше 200 И объем продаж равен big
+select score_name from vendors where quantity > 200 and valume_sale = 'big';
+-- 11. Получить все записи, минимальная цена на товар у которых больше 50 ИЛИ количество товаров больше 100
+select * from vendors where price_min > 50 or quantity > 100;
+-- 12. Получить все записи, отсортированные по количеству товаров (по возрастанию)
+select * from vendors order by quantity asc;
+-- 13. Получить записи, количество товаров у которых больше средней (подзапрос)
+select * from vendors where quantity > (select avg(quantity) from vendors);
+-- 14. Поменять обьем продаж на big у записей, у которых максимальная цена на товар больше 500
+update vendors set valume_sale = 'big' where price_max > 500;
+-- 15. Обновить имя продавца на Василий с id 7 (если в ходе выполнения дз у вас не будет записи с таким id то укажите какой есть)
+update vendors set boss_neme = 'Vasiliy' where id = 15;
+-- 16. Удалить ПРЕДПОСЛЕДНЮЮ запись в бд
+delete from vendors  order by id DEsc limit 1 offset 1;
+-- 17. Написать запрос на удаление всех записей с таблицы и запрос на удаление таблицы 
+delete from vendors;
+drop table vendors;
+--   (проверяйте выполнение в начале, что бы потом не перевыполнять 300 раз одни и те же запросы)
