@@ -18,9 +18,9 @@ class CreateTeachersTable extends Migration
             $table->string('surname');
             $table->string('firstname');
             $table->string('patronymic');
-            $table->unsignedInteger('age');
+            $table->unsignedInteger('age')->nullable();
             $table->string('gender');
-            $table->integer('telephone');
+            $table->integer('telephone')->nullable();
             $table->string('email');
             $table->timestamps();
         });

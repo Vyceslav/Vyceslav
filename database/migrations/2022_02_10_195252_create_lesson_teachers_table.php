@@ -14,12 +14,12 @@ class CreateLessonTeachersTable extends Migration
     public function up()
     {
         Schema::create('lesson_teachers', function (Blueprint $table) {
-            $table->unsignedInteger('lesson_id');
-            $table->unsignedInteger('teacher_id');
-            $table->foreign('lesson_id')->references('id')->on('lessons');
-            $table->foreign('teacher_id')->references('id')->on('teachers');
+            $table->id();
+            $table->bigInteger('lesson_id')->nullable(false);
+            $table->bigInteger('teacher_id')->nullable(false);
             $table->timestamps();
         });
+
     }
 
     /**
@@ -29,11 +29,6 @@ class CreateLessonTeachersTable extends Migration
      */
     public function down()
     {
-        Schema::table('lesson_teachers', function (Blueprint $table) {
-            $table->dropForeign(['lesson_id']);
-            $table->dropColumn('lesson_id');
-            $table->dropForeign(['teacher_id']);
-            $table->dropColumn('teacher_id');
-        });
+        Schema::dropIfExists('lesson_teachers');
     }
 }

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Teacher;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TeacherController extends Controller
 {
@@ -13,7 +15,9 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        //
+//        $teachers = DB::table('teachers')->where('id', 5)->first();
+//        dd($teachers);
+
     }
 
     /**
@@ -23,7 +27,9 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        //
+        $teacher = DB::table('teachers')->find(3);
+
+        return view('teachers', ['teacher' => $teacher]);
     }
 
     /**
